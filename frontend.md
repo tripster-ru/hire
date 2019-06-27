@@ -66,7 +66,7 @@
 
 ~~~
 
-### 6. Что такое рекативность?
+### 6. Какие реализации реактивности вам знакомы? Чем отличается реактивность в Angular1, Vue2 и Vue3?
 ~~~
 // ответьте тут
 
@@ -79,13 +79,48 @@
 
 ~~~
 
-### 8. Какими версиями стандарта ECMAScript и инструментами вы пользуетесь при написании кода и подготовки его к продакшену?
+### 8. Используете ли вы современные версии стандарта ECMA? Какими инструментами для этого пользуетесь?
 ~~~
 // ответьте тут
 
 ~~~
 
-### 9. Сделайте рефакторинг кода.
+
+### 9. Чем будут отличаться поведения трёх реализаций?
+~~~javascript
+const fetchData = async id => {
+    return {
+        response1: await fetchAPI1(id),
+        response2: await fetchAPI2(id),
+    }
+}
+~~~
+~~~javascript
+const fetchData = async id => {
+    const request1 = fetchAPI1(id);
+    const request2 = fetchAPI2(id);
+    return {
+        response1: await request1,
+        response2: await request2,
+    }
+}
+~~~
+~~~javascript
+const fetchData = async id => {
+    const request1 = fetchAPI1(id);
+    const request2 = fetchAPI2(id);
+    const [response1, response2] = await Promise.all([request1, request2]);
+    return {response1, response2};
+}
+~~~
+
+~~~
+// ответьте тут
+
+~~~
+
+
+### 10. Сделайте рефакторинг кода.
 *приветствуются коментарии с описанием что и для чего изменено*
 
 ~~~javascript
